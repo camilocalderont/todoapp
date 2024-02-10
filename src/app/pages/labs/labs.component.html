@@ -1,0 +1,156 @@
+<div class="container">
+  <h1>Hola este es mi primer proyecto</h1>
+  <h2>{{welcome}}</h2>
+  <ul>
+    @for (task of tasks(); track task) {
+      <li>
+        {{task}}
+      </li>
+    }
+  </ul>
+  <hr>
+    <h2>{{ 'Hola'.repeat(4) }}</h2>
+    <p> la suma de 3 + 3 = {{ 3 + 3}}</p>
+    <p> Hi, my name is {{ person.name }} and i'm  {{ person().age }} years old </p>
+    <hr>
+      <img [src]="person().avatar" alt="">
+      <input type="text" [value]="person().name">
+      <input type="number" [value]="person().age">
+      <button [disabled]="disabled">Click me!</button>
+      <hr>
+        <button (click)="clickHandler()">Click me!</button>
+        <button (dblclick)="clickHandler()">Click me!</button>
+        <p>(change)</p>
+        <input type="number" [value]="person().age" (change)="changeSignalObjectHandler($event)">
+        <p>(keydown)</p>
+        <input type="text" [value]="person().name" (keydown)="keyDownSignalObjectHandler($event)">
+        <p>(keyUp shift + T)</p>
+        <input type="text" [value]="person().name" (keyup.shift.t)="clickHandler()">
+        <hr>
+          <p>Hola mi nombre en signal {{name()}}</p>
+          <input type="text" [value]="name()" (keyup)="keyUpSignalHandler($event)">
+          <hr>
+            <ul>
+              <p>Total {{tasks().length}}</p>
+              @for (task of tasks(); track task; let i = $index) {
+                <li>
+                  {{i}} {{task}}
+                </li>
+              }
+            </ul>
+            <hr>
+              @if (1 == 1) {
+                <div>My Content</div>
+              }
+              @if (person().name == 'Camilo' && person().age > 18) {
+                <div>
+                  Soy Camilo y soy Mayor de 18
+                </div>
+              } @else {
+                Soy Camilo y soy menor de 18
+              }
+              <hr>
+                @if (person().name == 'Camilo') {
+                  <p>Soy Camilo con nueva sintaxis</p>
+                  }@else {
+                  <p>No soy nadie con nueva sintaxis</p>
+                }
+
+                <hr>
+                  <div>
+                    @switch (person().name) {
+                      @case ('Camilo') {
+                        <p>Soy Camilo</p>
+                      }
+                      @case ('Moni') {
+                        <p>Soy Moni</p>
+                      }
+                      @case ('Zoe') {
+                        <p>Soy Zoe</p>
+                      }
+                      @case ('Dani') {
+                        <p>Soy Dani</p>
+                      }
+                      @default {
+                        <p>No soy nadie</p>
+                      }
+                    }
+                  </div>
+                  <hr>
+                    <input type="color" [formControl]="colorControl">
+                    <p>color: {{colorControl.value}}</p>
+                    <input type="number" [formControl]="widthControl">
+                    <div class="box" [style.width.px]="widthControl.value"></div>
+                    <hr>
+                      <svg>
+                        <rect x="0" y="0" height="100" width="100" [attr.fill]="colorControl.value"></rect>
+                      </svg>
+                      <hr>
+                        <p>
+                          <input type="text" [formControl]="nameControl"><br />
+                          <span class="message-error" [class.show]="nameControl.invalid && nameControl.touched">Nombre invalido</span>
+                        </p>
+                        <p>
+                          <input type="text"><br>
+                        </p>
+                        <hr>
+                          <h2>New For</h2>
+                          <ul>
+                            <p>Total {{tasks().length}}</p>
+                            @for (task of tasks(); track task; let i = $index) {
+                              <li>
+                                {{i}} {{task}}
+                              </li>
+                            }
+                          </ul>
+                          <ul>
+                            @for (task of tasks(); track task; let i = $index) {
+                              <li>{{i}} {{task}}</li>
+                              } @empty {
+                              <li><strong>No hay tareas</strong></li>
+                            }
+                          </ul>
+
+                          <hr>
+                            <h2>New Switch</h2>
+                            <div>
+                              @switch (person().name) {
+                                @case ('Camilo') {
+                                  <p>Soy Camilo</p>
+                                }
+                                @case ('Moni') {
+                                  <p>Soy Moni</p>
+                                }
+                                @case ('Zoe') {
+                                  <p>Soy Zoe</p>
+                                }
+                                @case ('Dani') {
+                                  <p>Soy Dani</p>
+                                }
+                                @default {
+                                  <p>No soy nadie</p>
+                                }
+                              }
+                            </div>
+                            <div>
+                              @switch (person().name) {
+                                @case('Camilo') {
+                                  <p>Soy Camilo</p>
+                                }
+                                @case('Moni') {
+                                  <p>Soy Moni</p>
+                                }
+                                @case('Zoe') {
+                                  <p>Soy Zoe</p>
+                                }
+                                @case('Dani') {
+                                  <p>Soy Dani</p>
+                                }
+                                @default {
+                                  <p>No soy nadie</p>
+                                }
+                              }
+                            </div>
+                            <hr>
+                            </div>
+
